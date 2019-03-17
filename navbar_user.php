@@ -28,14 +28,11 @@
            </ul>
        </li>
 
-        <li class="">
-            <a href="#contactmenu" data-toggle="collapse" aria-expanded="false">Contact</a>
-            <ul class="collapse list-unstyled" id="contactmenu">
-                <li><a href="#add_member.php">phadnis.anurag@gmail.com</a></li>
-                <li><a href="#view_member.php">krishlalwani1@gmail.com</a></li>
+       <li class="">
 
-            </ul>
-        </li>
+              <li><a href="LeaveApplication.php">Send Leave Application</a></li>
+      </li>
+
         <?php
         if(isset($_SESSION['id']))
         {
@@ -46,15 +43,6 @@
         }
         ?>
          <hr>
-        <li class="">
-            <a href="#developer">Developed By:</a>
-            <ul class="list-unstyled" id="contactmenu">
-                <li><a href="#view_member.php">Krish Lalwani</a></li>
-                <li><a href="#add_member.php">Anurag Phadnis</a></li>
-                <li><a href="#view_member.php">Husain Attari</a></li>
-                <li><a href="#add_member.php">Aaditya Rathour</a></li>
-            </ul>
-        </li>
     <hr>
     </ul>
 </nav>

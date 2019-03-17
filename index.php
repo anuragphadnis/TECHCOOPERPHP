@@ -9,7 +9,7 @@
     }
 
     $salt='new_ton56*';
-
+    $jobNameData = $pdo->query("SELECT * FROM job");
     if(isset($_POST['id']) && isset($_POST['pass']))
     {
         unset($_SESSION['id']);
@@ -86,12 +86,17 @@
 
             <form method="POST" action="index.php" class="col-xs-5">
 
-                <p>Role : &nbsp&nbsp&nbsp
-                <input type="radio" name="role" value="0"> Administrator &nbsp&nbsp&nbsp
-                <input type="radio" name="role" value="1" checked> Employee &nbsp&nbsp&nbsp
-                <input type="radio" name="role" value="2" checked> Project Manager &nbsp&nbsp&nbsp
-                </p>
-
+              <div class="form-group">
+              <span class="input-group-addon">Role</span>
+              <select name="role" class="form-control">
+              <?php
+                while($data = $jobNameData->fetch(PDO::FETCH_ASSOC))
+                {
+                    echo "<option value =".$data['job_id'].">".$data['job_name']."</option>";
+                }
+              ?>
+              </select>
+              </div>
                 <div class="input-group">
                 <span class="input-group-addon">ID</span>
                 <input type="text" name="id" id="id" class="form-control" required placeholder="Enter your id">

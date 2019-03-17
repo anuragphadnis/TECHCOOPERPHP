@@ -14,7 +14,7 @@
         header("Location: home.php");
         return;
     }
-
+    $jobNameData = $pdo->query("SELECT * FROM job WHERE 1");
     $salt='new_ton56*';
 
     if(isset($_POST['id']) )
@@ -88,8 +88,8 @@
 </head>
 <body>
     <div class="wrapper">
-    <?php if (isset($_SESSION['id'])&&$_SESSION['role']=='0') include "navbar.php";
-                else if(isset($_SESSION['id'])&&$_SESSION['role']=='1')  include "navbar_faculty.php";
+    <?php if (isset($_SESSION['id'])&&$_SESSION['role']=='1') include "navbar.php";
+                else if(isset($_SESSION['id'])&&$_SESSION['role']=='2')  include "navbar_faculty.php";
                 else include "navbar_tech.php";?>
       <div class="container-fluid row" id="content">
         <div class="page-header">
@@ -111,12 +111,17 @@
 
     <form method="POST" action="addmember.php"  class="col-xs-5">
 
-    <p>Role : &nbsp&nbsp&nbsp
-    <input type="radio" name="role" value="1"> HR Manager &nbsp&nbsp&nbsp
-    <input type="radio" name="role" value="2" checked> Project Manager &nbsp&nbsp&nbsp
-    <input type="radio" name="role" value="3"> Employee
-    </p>
-
+    <div class="form-group">
+    <span class="input-group-addon">Role</span>
+    <select name="role" class="form-control">
+    <?php
+      while($data = $jobNameData->fetch(PDO::FETCH_ASSOC))
+      {
+          echo "<option value =".$data['job_id'].">".$data['job_name']."</option>";
+      }
+    ?>
+    </select>
+    </div>
     <div class="input-group">
     <span class="input-group-addon">ID</span>
     <input type="text" name="id" required="" class="form-control" placeholder="Enter Employee ID" id="Mid" onchange="labs('Mid')"> </div><br/>
